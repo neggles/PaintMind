@@ -6,8 +6,8 @@
 
 from typing import Optional
 
-from torch import Tensor, nn
 import torch.nn.functional as F
+from torch import Tensor, nn
 
 
 class SwiGLUFFN(nn.Module):
@@ -33,11 +33,8 @@ class SwiGLUFFN(nn.Module):
 
 try:
     from xformers.ops import SwiGLU
-
-    XFORMERS_AVAILABLE = True
 except ImportError:
     SwiGLU = SwiGLUFFN
-    XFORMERS_AVAILABLE = False
 
 
 class SwiGLUFFNFused(SwiGLU):
